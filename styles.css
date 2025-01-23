@@ -1,0 +1,13 @@
+:root{
+    --primary-color: #17202a ;
+    --second-color: #ffffff;
+}
+*{
+    color: var(--second-color);
+}
+body{
+    background: var(--primary-color);
+}
+#Update{
+    display: none;
+}
