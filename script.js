@@ -116,9 +116,9 @@ function deleteData(index){
 }
 
 //function to update/edit data in local storage 
-function updateData(index){
-    document.getElementById("Submit").style.display = "block";
-    document.getElementById("Update").style.display = "none";
+function editData(index) {
+    document.getElementById("Submit").style.display = "none";
+    document.getElementById("Update").style.display = "block";
 
     var peopleList;
         if (localStorage.getItem("peopleList") == null) {
@@ -127,13 +127,15 @@ function updateData(index){
             peopleList = JSON.parse(localStorage.getItem("peopleList"));
         }
 
+    //var peopleList = JSON.parse(localStorage.getItem("peopleList")) || [];
+
     document.getElementById("name").value = peopleList[index].name;
     document.getElementById("age").value = peopleList[index].age;
     document.getElementById("address").value = peopleList[index].address;
     document.getElementById("email").value = peopleList[index].email;
 
-    document.querySelector("#Update").onclick = function(){
-        if(validateForm() == true){
+    document.getElementById("Update").onclick = function () {
+        if(validateForm() == true) {
             peopleList[index].name = document.getElementById("name").value;
             peopleList[index].age = document.getElementById("age").value;
             peopleList[index].address = document.getElementById("address").value;
@@ -141,6 +143,7 @@ function updateData(index){
 
             localStorage.setItem("peopleList", JSON.stringify(peopleList));
             showData();
+
             document.getElementById("name").value = "";
             document.getElementById("age").value = "";
             document.getElementById("address").value = "";
@@ -150,5 +153,6 @@ function updateData(index){
             document.getElementById("Submit").style.display = "block";
             document.getElementById("Update").style.display = "none";
         }
-    }
+    };
 }
+
